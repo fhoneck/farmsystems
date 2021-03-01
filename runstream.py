@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.beta_set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 sheet = pd.read_csv("streamsheet.csv")
 years = st.slider(label = "Seasons",min_value = 1871, max_value = 2020, value = (1950, 1980))
 sheet = sheet[sheet["Season"]>= years[0]]
