@@ -3,9 +3,11 @@ import pandas as pd
 
 st.set_page_config(layout="wide")
 sheet = pd.read_csv("streamsheet.csv")
-years = st.slider(label = "Seasons",min_value = 1871, max_value = 2020, value = (1950, 1980))
-sheet = sheet[sheet["Season"]>= years[0]]
-sheet = sheet[sheet["Season"]<= years[1]]
+col1, col2 = st.beta_columns(2)
+a = col1.number_input(label = "First Year",value = 1950,min_value = 1871,max_value = 2020)
+b = col2.number_input(label = "Last Year",value = 1980,min_value = 1871,max_value = 2020)
+sheet = sheet[sheet["Season"]>= a]
+sheet = sheet[sheet["Season"]<= b]
 teams = list(set(list(sheet["Team"])))
 teamsheet = pd.DataFrame()
 for i in teams:
