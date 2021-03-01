@@ -6,6 +6,8 @@ sheet = pd.read_csv("streamsheet.csv")
 col1, col2 = st.beta_columns(2)
 a = col1.number_input(label = "First Year",value = 1950,min_value = 1871,max_value = 2020)
 b = col2.number_input(label = "Last Year",value = 1980,min_value = 1871,max_value = 2020)
+if a > b:
+    st.header("ERROR: Starting Year must be before Last Year")
 sheet = sheet[sheet["Season"]>= a]
 sheet = sheet[sheet["Season"]<= b]
 teams = list(set(list(sheet["Team"])))
